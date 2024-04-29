@@ -1,18 +1,26 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import s from "./App.module.css";
 
 function App() {
   const [maxValue, setMaxValue] = useState<number>(0);
   const [startValue, setStartValue] = useState<number>(0);
-  const [count, setCount] = useState<number>(startValue);
+  const [count, setCount] = useState<number>(0);
+  const [message, setMessage] = useState<string>("enter values and press set");
+  const errorMessage = 'Incorrect value';
 
   const handleMaxValueChange = (e: any) => {
-    setMaxValue(parseInt(e.target.value, 10));
+    if (e.currentTarget.value < 0) {
+      setMessage('Incorrect value')
+    }
+    setMaxValue(parseInt(e.currentTarget.value, 10));
   };
 
   const handleStartValueChange = (e: any) => {
-    setStartValue(parseInt(e.target.value, 10));
+    if (e.currentTarget.value < 0) {
+      setMessage(errorMessage)
+    }
+    setStartValue(parseInt(e.currentTarget.value, 10));
   };
 
   const handleIncClick = () => {
@@ -22,7 +30,7 @@ function App() {
   };
 
   const handleResetClick = () => {
-    setCount(0);
+    setCount(startValue);
   };
 
   const handleSet = () => {
@@ -30,12 +38,11 @@ function App() {
       setMaxValue(maxValue);
       setStartValue(startValue);
       setCount(startValue);
-      console.log(maxValue, startValue);
     }
   };
 
-  const h1Classname = s.number + " " + (count === maxValue ? s.red : " ");
-
+  const h1Number = s.number + " " + (count === maxValue ? s.red : " ");
+  const h1Message = s.message + " " + (message === errorMessage ? s.red : " ");
   return (
     <div className={s.App}>
       <div className={`${s.container} ${s.outline}`}>
@@ -62,15 +69,18 @@ function App() {
           </label>
         </div>
         <div className={`${s.container} ${s.inner}`}>
-          <button type="submit" className={s.button} onClick={handleSet}>
+          <button disabled={message === errorMessage} type="submit"   className={`${s.button} ${message === errorMessage ? s.disabled : ""}`} onClick={handleSet}>
             Set
           </button>
         </div>
       </div>
       <div className={`${s.container} ${s.outline}`}>
         <div className={`${s.container} ${s.inner} ${s.h}`}>
-          {/* <input type="number" className={h1Classname} value={count}  onChange={handleCountValueChange}/> */}
-          <h1 className={h1Classname}>{count}</h1>
+          {count < 1 ? (
+            <h1 className={h1Message}>{message}</h1>
+          ) : (
+            <h1 className={h1Number}>{count}</h1>
+          )}
         </div>
         <div className={`${s.container} ${s.inner}`}>
           <button
@@ -81,7 +91,12 @@ function App() {
           >
             Inc
           </button>
-          <button type="reset" className={s.button} onClick={handleResetClick}>
+          <button
+            disabled={count === 0}
+            type="reset"
+            className={`${s.button} ${count === 0 ? s.disabled : ""}`}
+            onClick={handleResetClick}
+          >
             Reset
           </button>
         </div>

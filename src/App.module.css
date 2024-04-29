@@ -36,15 +36,20 @@
 
 .number {
     font-weight: 700;
-    font-size: 50px;
+    font-size: 30px;
 
+}
+.message {
+    font-weight: 700;
+    font-size: 30px;
+    text-align: center;
 }
 
 .red {
 
     font-weight:900;
     color: red;
-    font-size: 70px;
+    font-size: 50px;
 }
 
 .inner {
