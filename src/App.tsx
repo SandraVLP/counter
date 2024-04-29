@@ -25,8 +25,9 @@ const h1Classname = s.number +
 <div className={`${s.container} ${s.outline}`}>
   <div className={`${s.container} ${s.inner} ${s.h}`}><h1 className={h1Classname}>{count}</h1></div>
   <div className={`${s.container} ${s.inner}`}>
-    <button className={s.button} onClick={handleIncClick}>Inc</button>
-    <button className={s.button} onClick={handleResetClick}>Reset</button> 
+    <button disabled={count === 5} type='button' className={`${s.button} ${count === 5 ? s.disabled : ''}`} 
+ onClick={handleIncClick}>Inc</button>
+    <button type='reset' className={s.button} onClick={handleResetClick}>Reset</button> 
   </div>
 </div>
     </div>

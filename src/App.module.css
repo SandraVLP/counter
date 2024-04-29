@@ -28,7 +28,9 @@
 
 }
 
-
+.disabled {
+    opacity: 50%;
+}
 
 .number {
 
