@@ -16,17 +16,17 @@ const handleResetClick = () => {
   setCount(0)
 }
 
-const h1Classname =     s.button +
+const h1Classname = s.number +
 " " +
 (count === 5 ? s.red : " ");
 
   return (
-    <div className="App">
-<div className='counter-container'>
-  <div className='count'><h1 className={h1Classname}>{count}</h1></div>
-  <div className='calc-container'>
-    <button onClick={handleIncClick}>Inc</button>
-    <button onClick={handleResetClick}>Reset</button> 
+    <div className={s.App}>
+<div className={`${s.container} ${s.outline}`}>
+  <div className={`${s.container} ${s.inner} ${s.h}`}><h1 className={h1Classname}>{count}</h1></div>
+  <div className={`${s.container} ${s.inner}`}>
+    <button className={s.button} onClick={handleIncClick}>Inc</button>
+    <button className={s.button} onClick={handleResetClick}>Reset</button> 
   </div>
 </div>
     </div>

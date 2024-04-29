@@ -1,7 +1,60 @@
+.App {
+    background-color: rgb(30, 30, 30);
+    color: aquamarine;
+    display: flex;
+    justify-content: center;
+    padding: 100px;
+    
+}
+
+.container {
+    border: 2px solid aquamarine; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
 .button {
+    margin: 20px;
+    width: 100px;
+    height: 50px;
+    color: rgb(30, 30, 30);
+    background-color: aquamarine;
+    border: none;
+    border-radius: 10px;
+    font-size: xx-large;
+    font-weight: 700;
+
+}
+
+
+
+.number {
+
+    font-weight: 700;
+    font-size: 50px;
 
 }
 
 .red {
+
+    font-weight:900;
     color: red;
+    font-size: 70px;
+}
+
+.inner {
+    width: 400px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.outline {
+    width: 600px;
+    flex-direction: column;
+}
+
+.h {
+    height: 150px;
 }
