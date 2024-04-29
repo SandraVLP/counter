@@ -1,35 +1,58 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 import s from "./App.module.css";
 
 function App() {
-const [count, setCount] = useState<number>(0);
+  const [count, setCount] = useState<number>(0);
 
-const handleIncClick = () =>{
-  if (count < 5) {
-    setCount(count + 1)
-  }
-}
+  const handleIncClick = () => {
+    if (count < 5) {
+      setCount(count + 1);
+    }
+  };
 
-const handleResetClick = () => {
-  setCount(0)
-}
+  const handleResetClick = () => {
+    setCount(0);
+  };
 
-const h1Classname = s.number +
-" " +
-(count === 5 ? s.red : " ");
+  const h1Classname = s.number + " " + (count === 5 ? s.red : " ");
 
   return (
     <div className={s.App}>
-<div className={`${s.container} ${s.outline}`}>
-  <div className={`${s.container} ${s.inner} ${s.h}`}><h1 className={h1Classname}>{count}</h1></div>
-  <div className={`${s.container} ${s.inner}`}>
-    <button disabled={count === 5} type='button' className={`${s.button} ${count === 5 ? s.disabled : ''}`} 
- onClick={handleIncClick}>Inc</button>
-    <button type='reset' className={s.button} onClick={handleResetClick}>Reset</button> 
-  </div>
-</div>
+            <div className={`${s.container} ${s.outline}`}>
+        <div className={`${s.container} ${s.inner} ${s.h} ${s.outline}`}>
+        <label htmlFor="maxvalue" className={s.label}>max-value: <input className={s.input} type="number" id="maxvalue" /></label>
+        <label htmlFor="startvalue" className={s.label}>start-value: <input className={s.input} type="number" id="startvalue" /></label>
+        </div>
+        <div className={`${s.container} ${s.inner}`}>
+
+          <button type="submit" className={s.button} onClick={() => {}}>
+            Set
+          </button>
+        </div>
+      </div>
+      <div className={`${s.container} ${s.outline}`}>
+        <div className={`${s.container} ${s.inner} ${s.h}`}>
+          <h1 className={h1Classname}>{count}</h1>
+        </div>
+        <div className={`${s.container} ${s.inner}`}>
+          <button
+            disabled={count === 5}
+            type="button"
+            className={`${s.button} ${count === 5 ? s.disabled : ""}`}
+            onClick={handleIncClick}
+          >
+            Inc
+          </button>
+          <button type="reset" className={s.button} onClick={handleResetClick}>
+            Reset
+          </button>
+        </div>
+      </div>
+
+
+      
     </div>
   );
 }

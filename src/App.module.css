@@ -2,8 +2,8 @@
     background-color: rgb(30, 30, 30);
     color: aquamarine;
     display: flex;
-    justify-content: center;
-    padding: 100px;
+    justify-content: space-between;
+    padding: 50px;
     
 }
 
@@ -13,6 +13,8 @@
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    width: 40%;
+
 }
 
 .button {
@@ -47,16 +49,33 @@
 }
 
 .inner {
-    width: 400px;
+    width: 80%;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
 .outline {
-    width: 600px;
+justify-content: space-evenly;
     flex-direction: column;
 }
 
 .h {
     height: 150px;
+}
+
+.label {
+    font-size: larger;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+}
+
+.input {
+    font-size: large;
+    border: 2px solid aquamarine; 
+    width: 50%;
+    border-radius: 5px;
+    padding: 3px;
+    text-align: center;
 }
