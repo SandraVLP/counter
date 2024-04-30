@@ -7,18 +7,19 @@ function App() {
   const [startValue, setStartValue] = useState<number>(0);
   const [count, setCount] = useState<number>(0);
   const [message, setMessage] = useState<string>("enter values and press set");
-  const errorMessage = 'Incorrect value';
+  const errorMessage = "Incorrect value";
+  const [isSetClicked, setClicked] = useState(false);
 
   const handleMaxValueChange = (e: any) => {
     if (e.currentTarget.value < 0) {
-      setMessage('Incorrect value')
+      setMessage("Incorrect value");
     }
     setMaxValue(parseInt(e.currentTarget.value, 10));
   };
 
   const handleStartValueChange = (e: any) => {
     if (e.currentTarget.value < 0) {
-      setMessage(errorMessage)
+      setMessage(errorMessage);
     }
     setStartValue(parseInt(e.currentTarget.value, 10));
   };
@@ -38,11 +39,14 @@ function App() {
       setMaxValue(maxValue);
       setStartValue(startValue);
       setCount(startValue);
+      setClicked(true);
     }
   };
 
   const h1Number = s.number + " " + (count === maxValue ? s.red : " ");
   const h1Message = s.message + " " + (message === errorMessage ? s.red : " ");
+  const inputStartClassname = s.input + " " + (startValue < 0 ? s.error : " ");
+  const inputMaxClassname = s.input + " " + (maxValue < 0 ? s.error : " ");
   return (
     <div className={s.App}>
       <div className={`${s.container} ${s.outline}`}>
@@ -50,7 +54,7 @@ function App() {
           <label htmlFor="maxvalue" className={s.label}>
             max-value:{" "}
             <input
-              className={s.input}
+              className={inputMaxClassname}
               type="number"
               id="maxvalue"
               onChange={handleMaxValueChange}
@@ -60,7 +64,7 @@ function App() {
           <label htmlFor="startvalue" className={s.label}>
             start-value:{" "}
             <input
-              className={s.input}
+              className={inputStartClassname}
               type="number"
               id="startvalue"
               value={startValue}
@@ -69,7 +73,14 @@ function App() {
           </label>
         </div>
         <div className={`${s.container} ${s.inner}`}>
-          <button disabled={message === errorMessage} type="submit"   className={`${s.button} ${message === errorMessage ? s.disabled : ""}`} onClick={handleSet}>
+          <button
+            disabled={message === errorMessage || startValue >= maxValue}
+            type="submit"
+            className={`${s.button} ${
+              message === errorMessage || startValue >= maxValue ? s.disabled : ""
+            }`}
+            onClick={handleSet}
+          >
             Set
           </button>
         </div>
@@ -84,17 +95,19 @@ function App() {
         </div>
         <div className={`${s.container} ${s.inner}`}>
           <button
-            disabled={count === maxValue}
+            disabled={count === maxValue || !isSetClicked}
             type="button"
-            className={`${s.button} ${count === maxValue ? s.disabled : ""}`}
+            className={`${s.button} ${
+              count === maxValue || !isSetClicked ? s.disabled : ""
+            }`}
             onClick={handleIncClick}
           >
             Inc
           </button>
           <button
-            disabled={count === 0}
+            disabled={!isSetClicked}
             type="reset"
-            className={`${s.button} ${count === 0 ? s.disabled : ""}`}
+            className={`${s.button} ${!isSetClicked ? s.disabled : ""}`}
             onClick={handleResetClick}
           >
             Reset
