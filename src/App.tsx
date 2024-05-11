@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import s from "./App.module.css";
+import { Button } from "./Button";
 
 function App() {
   const [maxValue, setMaxValue] = useState<number>(0);
@@ -73,16 +74,17 @@ function App() {
           </label>
         </div>
         <div className={`${s.container} ${s.inner}`}>
-          <button
-            disabled={message === errorMessage || startValue >= maxValue}
-            type="submit"
-            className={`${s.button} ${
-              message === errorMessage || startValue >= maxValue ? s.disabled : ""
-            }`}
+          <Button
+            btntype="submit"
             onClick={handleSet}
-          >
-            Set
-          </button>
+            disabled={message === errorMessage || startValue >= maxValue}
+            className={
+              message === errorMessage || startValue >= maxValue
+                ? s.disabled
+                : ""
+            }
+            title="Set"
+          />
         </div>
       </div>
       <div className={`${s.container} ${s.outline}`}>
@@ -94,24 +96,24 @@ function App() {
           )}
         </div>
         <div className={`${s.container} ${s.inner}`}>
-          <button
-            disabled={count === maxValue || !isSetClicked}
-            type="button"
-            className={`${s.button} ${
-              count === maxValue || !isSetClicked ? s.disabled : ""
-            }`}
+        <Button
+            btntype="button"
             onClick={handleIncClick}
-          >
-            Inc
-          </button>
-          <button
-            disabled={!isSetClicked}
-            type="reset"
-            className={`${s.button} ${!isSetClicked ? s.disabled : ""}`}
+            disabled={count === maxValue || !isSetClicked}
+            className={
+              count === maxValue || !isSetClicked ? s.disabled : ""
+            }
+            title="Inc"
+          />
+        <Button
+            btntype="reset"
             onClick={handleResetClick}
-          >
-            Reset
-          </button>
+            disabled={!isSetClicked}
+            className={
+              !isSetClicked ? s.disabled : ""
+            }
+            title="Reset"
+          />
         </div>
       </div>
     </div>
