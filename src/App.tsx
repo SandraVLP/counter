@@ -13,17 +13,26 @@ function App() {
   const [isSetClicked, setClicked] = useState(false);
 
   const handleMaxValueChange = (e: any) => {
-    if (e.currentTarget.value < 0) {
-      setMessage("Incorrect value");
+    let value = parseInt(e.currentTarget.value, 10); // Parse to integer once for reusability
+
+    if (value < 0) {
+        setMessage(errorMessage);
+    } else {
+        setMessage("enter values and press set");
     }
-    setMaxValue(parseInt(e.currentTarget.value, 10));
+
+    setMaxValue(value);
   };
 
   const handleStartValueChange = (e: any) => {
-    if (e.currentTarget.value < 0) {
-      setMessage(errorMessage);
+    let value = parseInt(e.currentTarget.value, 10); // Parse to integer once for reusability
+
+    if (value < 0) {
+        setMessage(errorMessage);
+    } else {
+        setMessage("enter values and press set");
     }
-    setStartValue(parseInt(e.currentTarget.value, 10));
+    setStartValue(value);
   };
 
   const handleIncClick = () => {
@@ -60,9 +69,9 @@ function App() {
           <Button
             btntype="submit"
             onClick={handleSet}
-            disabled={message === errorMessage || startValue >= maxValue}
+            disabled={startValue < 0 || startValue >= maxValue || maxValue < 0}
             className={
-              message === errorMessage || startValue >= maxValue
+              startValue < 0 || startValue >= maxValue || maxValue < 0
                 ? s.disabled
                 : ""
             }
