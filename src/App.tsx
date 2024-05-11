@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import s from "./App.module.css";
 import { Button } from "./Button";
+import { Input } from "./Input";
 
 function App() {
   const [maxValue, setMaxValue] = useState<number>(0);
@@ -52,26 +53,8 @@ function App() {
     <div className={s.App}>
       <div className={`${s.container} ${s.outline}`}>
         <div className={`${s.container} ${s.inner} ${s.h} ${s.outline}`}>
-          <label htmlFor="maxvalue" className={s.label}>
-            max-value:{" "}
-            <input
-              className={inputMaxClassname}
-              type="number"
-              id="maxvalue"
-              onChange={handleMaxValueChange}
-              value={maxValue}
-            />
-          </label>
-          <label htmlFor="startvalue" className={s.label}>
-            start-value:{" "}
-            <input
-              className={inputStartClassname}
-              type="number"
-              id="startvalue"
-              value={startValue}
-              onChange={handleStartValueChange}
-            />
-          </label>
+          <Input htmlFor="maxvalue" className={inputMaxClassname} id="maxvalue" onChange={handleMaxValueChange} value={maxValue} title="max-value:"/>
+          <Input htmlFor="startvalue" className={inputStartClassname} id="startvalue" onChange={handleStartValueChange} value={startValue} title="start-value:"/>
         </div>
         <div className={`${s.container} ${s.inner}`}>
           <Button
