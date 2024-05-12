@@ -13,7 +13,7 @@ function App() {
   const [isSetClicked, setClicked] = useState(false);
 
   const handleMaxValueChange = (e: any) => {
-    let value = parseInt(e.currentTarget.value, 10); // Parse to integer once for reusability
+    let value = parseInt(e.currentTarget.value, 10); 
 
     if (value < 0) {
         setMessage(errorMessage);
@@ -25,7 +25,7 @@ function App() {
   };
 
   const handleStartValueChange = (e: any) => {
-    let value = parseInt(e.currentTarget.value, 10); // Parse to integer once for reusability
+    let value = parseInt(e.currentTarget.value, 10); 
 
     if (value < 0) {
         setMessage(errorMessage);
